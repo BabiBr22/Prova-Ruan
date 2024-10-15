@@ -1,0 +1,41 @@
+1. Adicionar uma nova vaga (POST)
+
+POST http://localhost:3000/api/vagas
+Content-Type: application/json
+
+{
+  "titulo": "Desenvolvedor Backend Node.js",
+  "descricao": "Trabalhar com API RESTful usando Node.js",
+  "cargo": "Desenvolvedor",
+  "cidade": "São Paulo",
+  "salario": 7000
+}
+
+2. Listar todas as vagas (GET)
+
+GET http://localhost:3000/api/vagas
+3. Buscar vaga específica pelo ID (GET)
+
+GET http://localhost:3000/api/vagas/1
+4. Atualizar uma vaga existente (PUT)
+
+PUT http://localhost:3000/api/vagas/1
+Content-Type: application/json
+
+{
+  "titulo": "Desenvolvedor Full Stack",
+  "descricao": "Desenvolver tanto front-end quanto back-end",
+  "cargo": "Desenvolvedor Full Stack",
+  "cidade": "Rio de Janeiro",
+  "salario": 8000
+}
+
+5. Excluir uma vaga (DELETE)
+
+DELETE http://localhost:3000/api/vagas/1
+6. Filtrar vagas por cargo (GET)
+
+GET http://localhost:3000/api/cargo/Desenvolvedor
+7. Filtrar vagas por localização (GET)
+
+GET http://localhost:3000/api/localizacao/Sao%20Paulo
