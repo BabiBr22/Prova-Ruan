@@ -7,7 +7,7 @@ exports.createVaga = async (req, res) => {
     const vaga = await Vaga.create({ titulo, descricao, cargo, cidade, salario });
     return res.status(201).json(vaga);
   } catch (error) {
-    return res.status(500).json({ error: 'Erro ao criar vaga.' });
+    return res.status(422).json({ error: 'Erro ao criar vaga. Verifique os dados enviados.' });
   }
 };
 
@@ -17,7 +17,7 @@ exports.getVagas = async (req, res) => {
     const vagas = await Vaga.findAll({ attributes: ['id', 'titulo'] });
     return res.status(200).json(vagas);
   } catch (error) {
-    return res.status(500).json({ error: 'Erro ao buscar vagas.' });
+    return res.status(503).json({ error: 'Serviço temporariamente indisponível. Tente novamente mais tarde.' });
   }
 };
 
@@ -31,7 +31,7 @@ exports.getVagaById = async (req, res) => {
       return res.status(404).json({ error: 'Vaga não encontrada.' });
     }
   } catch (error) {
-    return res.status(500).json({ error: 'Erro ao buscar vaga.' });
+    return res.status(400).json({ error: 'Erro ao buscar vaga. Verifique o ID informado.' });
   }
 };
 
@@ -47,7 +47,7 @@ exports.updateVaga = async (req, res) => {
       return res.status(404).json({ error: 'Vaga não encontrada.' });
     }
   } catch (error) {
-    return res.status(500).json({ error: 'Erro ao atualizar vaga.' });
+    return res.status(422).json({ error: 'Erro ao atualizar vaga. Verifique os dados enviados.' });
   }
 };
 
@@ -62,7 +62,7 @@ exports.deleteVaga = async (req, res) => {
       return res.status(404).json({ error: 'Vaga não encontrada.' });
     }
   } catch (error) {
-    return res.status(500).json({ error: 'Erro ao remover vaga.' });
+    return res.status(400).json({ error: 'Erro ao remover vaga. Verifique o ID informado.' });
   }
 };
 
@@ -72,7 +72,7 @@ exports.getVagasByCargo = async (req, res) => {
     const vagas = await Vaga.findAll({ where: { cargo: req.params.cargo } });
     return res.status(200).json(vagas);
   } catch (error) {
-    return res.status(500).json({ error: 'Erro ao buscar vagas por cargo.' });
+    return res.status(503).json({ error: 'Serviço temporariamente indisponível. Tente novamente mais tarde.' });
   }
 };
 
@@ -82,6 +82,6 @@ exports.getVagasByCidade = async (req, res) => {
     const vagas = await Vaga.findAll({ where: { cidade: req.params.cidade } });
     return res.status(200).json(vagas);
   } catch (error) {
-    return res.status(500).json({ error: 'Erro ao buscar vagas por cidade.' });
+    return res.status(503).json({ error: 'Serviço temporariamente indisponível. Tente novamente mais tarde.' });
   }
 };
