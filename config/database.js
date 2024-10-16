@@ -10,7 +10,7 @@ const sequelize = new Sequelize('postgresql://barbara:o6oq-5psSjRTZdeLmRn9TQ@sen
       rejectUnauthorized: false, // Ignora a verificação do certificado SSL
     },
   },
-  logging: false, // Desativa o log de SQL, útil para produção (pode ativar se precisar de debug)
+  logging: console.log, // Habilita o logging
 });
 
 module.exports = sequelize;
